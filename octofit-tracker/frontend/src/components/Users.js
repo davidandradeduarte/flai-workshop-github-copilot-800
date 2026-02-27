@@ -9,11 +9,15 @@ const Users = () => {
   const [error, setError] = useState('');
 
   const codespace = process.env.REACT_APP_CODESPACE_NAME;
+  const apiUrl = codespace
+    ? `https://${codespace}-8000.app.github.dev/api/users/`
+    : 'http://localhost:8000/api/users/';
+  const teamsUrl = codespace
+    ? `https://${codespace}-8000.app.github.dev/api/teams/`
+    : 'http://localhost:8000/api/teams/';
   const baseUrl = codespace
     ? `https://${codespace}-8000.app.github.dev`
     : 'http://localhost:8000';
-  const apiUrl = `${baseUrl}/api/users/`;
-  const teamsUrl = `${baseUrl}/api/teams/`;
 
   const fetchUsers = () => {
     fetch(apiUrl)
