@@ -5,6 +5,7 @@ class User(models.Model):
     username = models.CharField(max_length=100, unique=True)
     email = models.EmailField(unique=True)
     name = models.CharField(max_length=200)
+    team = models.CharField(max_length=200, default='')
 
     class Meta:
         db_table = 'users'
@@ -40,6 +41,8 @@ class Activity(models.Model):
 class Leaderboard(models.Model):
     user = models.CharField(max_length=100)
     score = models.IntegerField(default=0)
+    team = models.CharField(max_length=200, default='')
+    calories = models.IntegerField(default=0)
 
     class Meta:
         db_table = 'leaderboard'

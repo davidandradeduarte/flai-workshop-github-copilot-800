@@ -18,12 +18,12 @@ class Command(BaseCommand):
 
         # Create users - superheroes
         users = [
-            User(username='ironman', email='tony@starkindustries.com', name='Tony Stark'),
-            User(username='spiderman', email='peter@dailybugle.com', name='Peter Parker'),
-            User(username='blackwidow', email='natasha@shield.gov', name='Natasha Romanoff'),
-            User(username='superman', email='clark@dailyplanet.com', name='Clark Kent'),
-            User(username='batman', email='bruce@wayneenterprises.com', name='Bruce Wayne'),
-            User(username='wonderwoman', email='diana@themyscira.com', name='Diana Prince'),
+            User(username='ironman', email='tony@starkindustries.com', name='Tony Stark', team='Team Marvel'),
+            User(username='spiderman', email='peter@dailybugle.com', name='Peter Parker', team='Team Marvel'),
+            User(username='blackwidow', email='natasha@shield.gov', name='Natasha Romanoff', team='Team Marvel'),
+            User(username='superman', email='clark@dailyplanet.com', name='Clark Kent', team='Team DC'),
+            User(username='batman', email='bruce@wayneenterprises.com', name='Bruce Wayne', team='Team DC'),
+            User(username='wonderwoman', email='diana@themyscira.com', name='Diana Prince', team='Team DC'),
         ]
         for user in users:
             user.save()
@@ -58,12 +58,12 @@ class Command(BaseCommand):
 
         # Create leaderboard
         leaderboard_entries = [
-            Leaderboard(user='ironman', score=9500),
-            Leaderboard(user='spiderman', score=8700),
-            Leaderboard(user='blackwidow', score=8200),
-            Leaderboard(user='superman', score=9800),
-            Leaderboard(user='batman', score=9100),
-            Leaderboard(user='wonderwoman', score=9300),
+            Leaderboard(user='ironman', score=9500, team='Team Marvel', calories=400),
+            Leaderboard(user='spiderman', score=8700, team='Team Marvel', calories=300),
+            Leaderboard(user='blackwidow', score=8200, team='Team Marvel', calories=600),
+            Leaderboard(user='superman', score=9800, team='Team DC', calories=200),
+            Leaderboard(user='batman', score=9100, team='Team DC', calories=800),
+            Leaderboard(user='wonderwoman', score=9300, team='Team DC', calories=500),
         ]
         for entry in leaderboard_entries:
             entry.save()
@@ -85,6 +85,11 @@ class Command(BaseCommand):
                 name='Web Warrior Agility',
                 description='Agility and flexibility training for the friendly neighborhood hero.',
                 exercises=['Box Jumps 3x12', 'Lateral Shuffles 3x20m', 'Yoga Flow 20min', 'Balance Board 3x2min'],
+            ),
+            Workout(
+                name="Thor's Thunder Training",
+                description='Legendary strength and power workout fit for the God of Thunder.',
+                exercises=['Hammer Swings 5x10', 'Thunder Squats 4x8', 'Lightning Sprints 5x100m', 'Viking Press 4x6', 'Storm Plank 3x90s'],
             ),
         ]
         for workout in workouts:
